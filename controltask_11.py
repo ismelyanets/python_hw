@@ -1,17 +1,19 @@
-a = [[3, 8, 7],
-     [5, 9, 6],
-     [2, 6, 7]]
+import random
+import pprint
 
-x = [x[0] for x in a]
-x_1 = [x[1] for x in a]
-x_2 = [x[2] for x in a]
+a = [[random.randint(1, 9) for _ in range(5)]
+     for _ in range(5)]
 
-
-q = sorted(x)
-q1 = sorted(x_1, reverse=True)
-q2 = sorted(x_2)
-mat = [q, q1, q2]
+pprint.pprint(a)
+mat = []
+for i in range(len(a)):
+    x = [x[i] for x in a]
+    if i % 2 == 0:
+        q = sorted(x)
+    else:
+        q = sorted(x, reverse=True)
+    mat += [q]
 
 for y in range(len(mat)):
-     e = [e[y] for e in mat]
-     print(e)
+    e = [e[y] for e in mat]
+    print(e)
