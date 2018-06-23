@@ -9,7 +9,7 @@ phone_book = [
               {"name": "Ivan", "surname": "Ivanov", "age": 15, "phone_number":"+380507654321"},
              ]
 for entry in phone_book:
-    entry["mail"] = ""
+    entry["mail"] = entry.get("mail")
 print(phone_book)
 
 
@@ -99,13 +99,13 @@ def delete_entry_name_phonebook():
     found = False
     for entry in phone_book:
         if entry["name"] == name:
-            del entry
+            phone_book.remove(entry)
             idx += 1
             found = True
     if not found:
         printError("Not found!!")
-    print(phone_book)
-#print(delete_entry_name_phonebook())
+    print(print_phonebook())
+print(delete_entry_name_phonebook())
 
 
 #------------------------------------------------------------------------------
@@ -117,11 +117,11 @@ def my_function_sort_surname():
 #print(my_function_sort_surname())
 
 def find_entry_mail_phonebook():
-    mail = str(input("    Enter e-mail: "))
+    mail = str(input("    Enter mail: "))
     idx = 1
     found = False
     for entry in phone_book:
-        if entry["e-mail"] == mail:
+        if entry["mail"] == mail:
             print_entry(idx, entry)
             idx += 1
             found = True
@@ -136,7 +136,7 @@ def count_all_entries_in_phonebook():
 #------------------------------------------------------------------------------
 def print_phonebook_by_age():
     phone_book.sort(key=lambda elem: elem['age'])
-    print(phone_book)
+    print(print_phonebook())
 
 #print(print_phonebook_by_age())
 
