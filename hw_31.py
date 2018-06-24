@@ -8,9 +8,12 @@ phone_book = [
               {"name": "Petr", "surname": "Petrov", "age": 50, "phone_number":"+380501234567"},
               {"name": "Ivan", "surname": "Ivanov", "age": 15, "phone_number":"+380507654321"},
              ]
+
 for entry in phone_book:
-    entry["mail"] = entry.get("mail")
-print(phone_book)
+    if entry.get("mail") == "mail":
+        phone_book.append(entry)
+        
+#print(phone_book)
 
 
 #------------------------------------------------------------------------------
@@ -43,14 +46,14 @@ def add_entry_phonebook():
     name    = input("    Enter name: ")
     age     = int(input("    Enter age: "))
     phone_number   = input("    Enter phone num.: ")
-    mail = input("    Enter e-mail: ")
+    mail = input("    Enter mail: ")
 
     entry = {}
     entry["surname"] = surname
     entry["name"] = name
     entry["age"] = age
     entry["phone_number"] = phone_number
-    entry["e-mail"] = mail
+    entry["mail"] = mail
     phone_book.append(entry)
 
 
@@ -95,18 +98,15 @@ def find_entry_age_phonebook():
 #------------------------------------------------------------------------------
 def delete_entry_name_phonebook():
     name = str(input("    Enter name: "))
-    idx = 1
     found = False
-    for entry in phone_book:
+    for entry in reversed(phone_book):
         if entry["name"] == name:
             phone_book.remove(entry)
-            idx += 1
             found = True
     if not found:
         printError("Not found!!")
     print(print_phonebook())
-print(delete_entry_name_phonebook())
-
+#print(delete_entry_name_phonebook())
 
 #------------------------------------------------------------------------------
 def my_function_sort_surname():
