@@ -13,7 +13,7 @@ def distribution_of_survivals(passengers, field_name):
 
 
     for k in count_pass.keys():
-        share_surv = (surv_pass.get(k)) / (count_pass.get(k))
+        share_surv = ((surv_pass.get(k)) / (count_pass.get(k))) * 100
         print(field_name + ": " + k + " " + '%.2f' % (share_surv) + '%', end='    ')
 
 distribution_of_survivals('titanic.csv', 'Sex')
