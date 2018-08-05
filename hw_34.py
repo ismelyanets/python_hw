@@ -2,18 +2,19 @@ import random
 
 
 class Godzilla():
-    FILL_STOMACH_VOLUME = 0
+    LIMIT = 0.9
 
-    def __init__(self, weight):
+    def __init__(self, weight, fill_stomach_volume=0):
         self.weight = weight
+        self.limit_stomach = (self.LIMIT * weight)
+        self.fill_stomach_volume = fill_stomach_volume
 
 
 
     def eat(self, man):
-        limit_stomach = (0.9 * self.weight)
-        if (self.FILL_STOMACH_VOLUME + man) <= limit_stomach:
-            self.FILL_STOMACH_VOLUME += man
-            print('Current volume %d, man = %d' % (self.FILL_STOMACH_VOLUME, man))
+        if (self.fill_stomach_volume + man) <= self.limit_stomach:
+            self.fill_stomach_volume += man
+            print('Current volume %d, man = %d' % (self.fill_stomach_volume, man))
         else:
             print('I am full and can not eat people anymore')
 
